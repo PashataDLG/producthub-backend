@@ -9,7 +9,7 @@ const getProducts = async (req, res) => {
     }
 };
 
-const getProductById = async (req, res) => {
+const getProduct = async (req, res) => {
     try {
         const { id } = req.params;
         const product = await Product.findById(id);
@@ -64,7 +64,7 @@ const deleteProduct = async (req, res) => {
 
 module.exports = {
     getProducts,
-    getProductById,
+    getProduct,
     createProduct,
     updateProduct,
     deleteProduct
