@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const productRoute = require('./routes/product.route.js');
+const authRoute = require('./routes/authentication.route.js');
 const app = express();
 
 // middlewares
@@ -9,6 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 app.use('/api/products', productRoute);
+app.use('/auth', authRoute);
 
 const dbURI = 'mongodb+srv://angelp10bet:xwvAAwTEDdwFPRx9@testcluster.5mbtbdt.mongodb.net/Node-Test?retryWrites=true&w=majority&appName=TestCluster';
 
