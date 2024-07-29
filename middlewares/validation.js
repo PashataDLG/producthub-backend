@@ -16,9 +16,9 @@ const productSchema = Joi.object({
     })
 });
 
-const passwordPattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{4,}$';
+const passwordPattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{4,}$';
 
-const authenticationSchema = Joi.object({
+const registrationSchema = Joi.object({
     username: Joi.string().required().min(4).max(10).alphanum().messages({
         'string.empty': 'Username cannot be empty',
         'string.min': 'Username must be at least 4 characters long!',
@@ -31,4 +31,14 @@ const authenticationSchema = Joi.object({
     })
 });
 
-module.exports = { productSchema, authenticationSchema };
+const loginSchema = Joi.object({
+    username: Joi.string().required.messages({
+        'string.empty': 'Username cannot be empty!',
+        'string.alphanum': 'Username contains symbols that are not allowed!'
+    }),
+    password: Joi.string().required().messages({
+        'string.empty': 'Password field cannot be emtpy'
+    })
+});
+
+module.exports = { productSchema, registrationSchema, loginSchema };
