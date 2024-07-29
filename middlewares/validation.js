@@ -16,7 +16,7 @@ const productSchema = Joi.object({
     })
 });
 
-const passwordPattern = '^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{4,}$';
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{4,}$/;
 
 const registrationSchema = Joi.object({
     username: Joi.string().required().min(4).max(10).alphanum().messages({
@@ -32,7 +32,7 @@ const registrationSchema = Joi.object({
 });
 
 const loginSchema = Joi.object({
-    username: Joi.string().required.messages({
+    username: Joi.string().required().messages({
         'string.empty': 'Username cannot be empty!',
         'string.alphanum': 'Username contains symbols that are not allowed!'
     }),
