@@ -33,11 +33,10 @@ const registrationSchema = Joi.object({
 
 const loginSchema = Joi.object({
     username: Joi.string().required().messages({
-        'string.empty': 'Username cannot be empty!',
-        'string.alphanum': 'Username contains symbols that are not allowed!'
+        'string.empty': 'Username field cannot be empty!',
     }),
     password: Joi.string().required().messages({
-        'string.empty': 'Password field cannot be emtpy'
+        'string.empty': 'Password field cannot be empty'
     })
 });
 
