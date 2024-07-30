@@ -10,11 +10,15 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true,
+    },
+},
+    {
+        timestamps: true
     }
-});
+);
 
-userSchema.pre('save', async function(next) {
-    if(!this.isModified('password')) {
+userSchema.pre('save', async function (next) {
+    if (!this.isModified('password')) {
         return next();
     }
 
@@ -26,7 +30,7 @@ userSchema.pre('save', async function(next) {
     }
 });
 
-userSchema.methods.comparePassword = function(enteredPassword) {
+userSchema.methods.comparePassword = function (enteredPassword) {
     return bcrypt.compare(enteredPassword, this.password);
 };
 

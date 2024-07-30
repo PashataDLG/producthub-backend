@@ -4,23 +4,24 @@ const productRoute = require('./routes/product.route.js');
 const authRoute = require('./routes/authentication.route.js');
 const app = express();
 
-// middlewares
+require('dotenv').config();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-// routes
 app.use('/api/products', productRoute);
 app.use('/auth', authRoute);
 
-const dbURI = 'mongodb+srv://angelp10bet:xwvAAwTEDdwFPRx9@testcluster.5mbtbdt.mongodb.net/Node-Test?retryWrites=true&w=majority&appName=TestCluster';
+const port = process.env.PORT || 3000;
+const dbURI = process.env.MONGODB_URI;
 
-mongoose.connect(dbURI)
+mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to database!");
-        app.listen(3000, () => {
-            console.log('Server is running on port 3000');
+        app.listen(port, () => {
+            console.log(`Server is running on port ${port}`);
         });
     })
-    .catch(() => {
-        console.error("Connection failed");
+    .catch((error) => {
+        console.error("Connection failed", error);
     });
