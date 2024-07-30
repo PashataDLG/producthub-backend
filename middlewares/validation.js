@@ -27,7 +27,7 @@ const registrationSchema = Joi.object({
     }),
     password: Joi.string().required().pattern(passwordPattern).messages({
         'string.empty': 'Password cannot be empty',
-        'string.pattern':'Password must containt at least one lowercase letter, one uppercase letter, one number and one special symbol!',
+        'string.pattern.base':'Password must containt at least one lowercase letter, one uppercase letter, one number and one special symbol!'
     })
 });
 
