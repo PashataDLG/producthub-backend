@@ -1,19 +1,8 @@
-const User = require('../models/user-model.js');
-const jwt = require('jsonwebtoken');
-const Blacklist = require('../models/blacklisted-tokens-model.js');
-
+const authService = require('../services/authentication.service');
 
 const register = async (req, res) => {
-    const { username, password } = req.body;
-
     try {
-        const existingUser = await User.findOne({ username });
-
-        if (existingUser) {
-            return res.status(400).json({ message: 'Username already exists' });
-        };
-
-        await User.create({ username, password });
+        await authService.register(req.body);
         res.status(201).json({ message: 'User registered successfully' });
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -21,17 +10,14 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-    const { username, password } = req.body;
-
     try {
-        const user = await User.findOne({ username });
+        const result = await authService.login(req.body);
 
-        if (!user || !(await user.comparePassword(password))) {
-            return res.status(400).json({ message: 'Invalid credentials! ' });
+        if(!result.success) {
+            return res.status(400).json({ message: result.message });
         }
 
-        const token = jwt.sign({ id: user._id, createdAt: user.createdAt }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.status(200).json({ token });
+        res.status(200).json({ token: result.token });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -47,7 +33,11 @@ const logout = async (req, res) => {
     const token = authHeader.replace('Bearer ', '');
 
     try {
-        await Blacklist.create({ token });
+        const result = await authService.logout(token);
+        if(!result.success) {
+            res.status(400).json({ message: result.message });
+        };
+        
         res.status(200).json({ message: 'Successfully logged out.' });
     } catch (error) {
         res.status(500).json({ message: error.message });
