@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const productRoute = require('./routes/product.route.js');
 const authRoute = require('./routes/authentication.route.js');
+const errorHandler = require('./middlewares/errorHandler.js');
 const app = express();
 
 require('dotenv').config();
@@ -11,6 +12,8 @@ app.use(express.urlencoded({ extended: false }));
 
 app.use('/api/products', productRoute);
 app.use('/auth', authRoute);
+
+app.use(errorHandler);
 
 const port = process.env.PORT || 3000;
 const dbURI = process.env.MONGODB_URI;

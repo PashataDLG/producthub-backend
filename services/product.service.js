@@ -1,45 +1,63 @@
 const Product = require('../models/product.model');
 
 const getAllProducts = async () => {
-    const allProducts = await Product.find({});
+    try {
+        const allProducts = await Product.find({});
 
-    return allProducts;
+        return allProducts;
+    } catch (error) {
+        console.error('Error getting all products: ', error);
+
+        throw new Error('Failed to get all products');
+    }
 };
 
 const getProductById = async (id) => {
-    const product = await Product.findById(id);
+    try {
+        const product = await Product.findById(id);
 
-    if(!product) {
-        throw new Error('Product not found');
-    };
+        return product;
+    } catch (error) {
+        console.error('Error getting a specific product: ', error);
 
-    return product;
+        throw new Error('Failed to get a product');
+    }
 };
 
 const createProduct = async (productInfo) => {
-    const createdProduct = await Product.create(productInfo);
+    try {
+        const createdProduct = await Product.create(productInfo);
 
-    return createdProduct;
+        return createdProduct;
+    } catch (error) {
+        console.error('Error creating a new product: ', error);
+
+        throw new Error('Failed to create a product');
+    }
 };
 
 const updateProduct = async (id, updatedInfo) => {
-    const updatedProduct = await Product.findByIdAndUpdate(id, updatedInfo);
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(id, updatedInfo);
 
-    if(!updatedProduct) {
-        throw new Error('Product not found');
-    };
+        return updatedProduct;
+    } catch (error) {
+        console.error('Error updating a product: ', error);
 
-    return updatedProduct;
+        throw new Error('Failed to update the product');
+    }
 };
 
 const deleteProduct = async (id) => {
-    const deletedProduct = await Product.findByIdAndDelete(id);
+    try {
+        const deletedProduct = await Product.findByIdAndDelete(id);
 
-    if(!deletedProduct) {
-        throw new Error('Product not found');
+        return deletedProduct;
+    } catch (error) {
+        console.error('Error deleting a product: ', error);
+
+        throw new Error('Failed to delete the product');
     }
-
-    return deletedProduct;
 };
 
 module.exports = {
