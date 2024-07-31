@@ -42,7 +42,7 @@ const login = async (userInfo) => {
 
 const logout = async (userToken) => {
     try {
-        const blacklistedToken = Blacklist.create(userToken);
+        const blacklistedToken = Blacklist.create({ token: userToken });
         return { success: true, blacklistedToken };
     } catch (error) {
         console.error('Error during lgoout: ', error);
