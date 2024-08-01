@@ -13,15 +13,21 @@ app.use('/api/products', productRoute);
 app.use('/auth', authRoute);
 
 const port = process.env.PORT || 3000;
-const dbURI = process.env.MONGODB_URI;
+const dbURI = process.env.NODE_ENV === 'test' ? process.env.TEST_MONGODB_URI : process.env.MONGODB_URI;
 
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Connected to database!");
-        app.listen(port, () => {
-            console.log(`Server is running on port ${port}`);
-        });
+
+        // Стартирай сървъра само ако не сме в тестова среда
+        if (process.env.NODE_ENV !== 'test') {
+            app.listen(port, () => {
+                console.log(`Server is running on port ${port}`);
+            });
+        }
     })
     .catch((error) => {
         console.error("Connection failed", error);
     });
+
+module.exports = app;
