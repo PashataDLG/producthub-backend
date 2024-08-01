@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const productRoute = require('./routes/product.route.js');
-const authRoute = require('./routes/authentication.route.js');
+const productRoute = require('./routes/product-route.js');
+const authRoute = require('./routes/auth-route.js');
 const errorHandler = require('./middlewares/errorHandler.js');
 const app = express();
 
