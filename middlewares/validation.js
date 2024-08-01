@@ -16,7 +16,7 @@ const productSchema = Joi.object({
     })
 });
 
-const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{4,}$/;
+const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>[\]\\\/~`])[A-Za-z\d!@#$%^&*(),.?":{}|<>[\]\\\/~`]{4,}$/;
 
 const registrationSchema = Joi.object({
     username: Joi.string()
