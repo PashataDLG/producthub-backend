@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../app.js');
 const mongoose = require('mongoose');
-const User = require('../models/user-model.js');
+const User = require('../models/User-Model.js');
 
 beforeAll(async () => {
     const dbURI = process.env.TEST_MONGODB_URI;
@@ -80,7 +80,31 @@ describe('POST /auth/register', () => {
                 username: 'asdasd@',
                 password: 'TestPassword123!'
             })
-            expect(response.statusCode).toBe(400);
-            expect(response.body).toHaveProperty('message', 'Username must contain only letters and numbers!');
+        expect(response.statusCode).toBe(400);
+        expect(response.body).toHaveProperty('message', 'Username must contain only letters and numbers!');
+    });
+
+})
+
+describe('POST /auth/login', () => {
+    beforeEach(async () => {
+        await request(app)
+            .post('/auth/register')
+            .send({
+                username: "Testuser98",
+                password: "TestPassword123!"
+            })
+    })
+
+    it('Should login with the correct format username and password', async () => {
+        const response = await request(app)
+            .post('/auth/login')
+            .send({
+                username: "Testuser98",
+                password: "TestPassword123!"
+            })
+             
+            expect(response.statusCode).toBe(200);
+            expect(response.body).toHaveProperty('token');
     });
 })
