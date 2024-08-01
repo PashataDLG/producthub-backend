@@ -1,7 +1,7 @@
 const request = require('supertest');
 const app = require('../app.js');
 const mongoose = require('mongoose');
-const User = require('../models/User-Model.js');
+const User = require('../models/User.js');
 
 beforeAll(async () => {
     const dbURI = process.env.TEST_MONGODB_URI;
