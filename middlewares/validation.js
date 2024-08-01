@@ -19,16 +19,24 @@ const productSchema = Joi.object({
 const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{4,}$/;
 
 const registrationSchema = Joi.object({
-    username: Joi.string().required().min(4).max(10).alphanum().messages({
-        'string.empty': 'Username cannot be empty',
-        'string.min': 'Username must be at least 4 characters long!',
-        'string.max': 'Username must be maximum 10 characters long!',
-        'string.alphanum': 'Username must containt only letters and numbers!'
-    }),
-    password: Joi.string().required().pattern(passwordPattern).messages({
-        'string.empty': 'Password cannot be empty',
-        'string.pattern.base':'Password must containt at least one lowercase letter, one uppercase letter, one number and one special symbol!'
-    })
+    username: Joi.string()
+        .required()
+        .min(4)
+        .alphanum()
+        .pattern(/\d/, { name: 'number' })
+        .messages({
+            'string.empty': 'Username cannot be empty',
+            'string.min': 'Username must be at least 4 characters long!',
+            'string.alphanum': 'Username must contain only letters and numbers!',
+            'string.pattern.name': 'Username must contain at least one number!'
+        }),
+    password: Joi.string()
+        .required()
+        .pattern(passwordPattern)
+        .messages({
+            'string.empty': 'Password cannot be empty',
+            'string.pattern.base': 'Password must contain at least one lowercase letter, one uppercase letter, one number, and one special symbol!'
+        })
 });
 
 const loginSchema = Joi.object({
