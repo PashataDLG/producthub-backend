@@ -27,7 +27,6 @@ const registrationSchema = Joi.object({
         .messages({
             'string.empty': 'Username cannot be empty',
             'string.min': 'Username must be at least 4 characters long!',
-            'string.max': 'Username must be at most 10 characters long!',
             'string.alphanum': 'Username must contain only letters and numbers!',
             'string.pattern.name': 'Username must contain at least one number!'
         }),
