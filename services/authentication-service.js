@@ -1,6 +1,6 @@
-const User = require('../models/User-Model.js');
+const User = require('../models/User.js');
 const jwt = require('jsonwebtoken');
-const Blacklist = require('../models/BlacklistedTokens-Model.js');
+const Blacklist = require('../models/BlacklistedTokens.js');
 
 const register = async (userInfo) => {
     try {
