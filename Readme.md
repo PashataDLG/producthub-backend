@@ -1,6 +1,6 @@
 # ProductHub
 
-ProductHub is a simple web application for managing products, including user authentication and product-related operations using NodeJS and Express.
+ProductHub is a simple web application for managing products, including user authentication and product-related operations.
 
 ## Table of Contents
 
@@ -234,5 +234,24 @@ TEST_MONGODB_URI=your_test_mongodb_uri
 
 - For updating a product, you do not need to provide all product details. You can choose to update only specific fields such as `quantity` or `price`.
 - The `Authorization` header is required for endpoints that require authentication. Format: `Authorization: Bearer <token>`.
-- **Username Requirements**: Must be at least 4 characters long, alphanumeric, and contain at least one number.
-- **Password Requirements**: Must contain at least one lowercase letter, one uppercase letter, one number, and one special symbol.
+- **Username Requirements**:
+    - Must be at least 4 characters long.
+    - Must be alphanumeric.
+    - Must contain at least one number.
+
+- **Password Requirements**:
+    - Must contain at least one lowercase letter.
+    - Must contain at least one uppercase letter.
+    - Must contain at least one number.
+    - Must contain at least one special symbol.
+
+## Technologies Used
+
+- Joi
+- Jest
+- Express.js
+- Express Router
+- Rate Limiter
+- JWT
+- Bcrypt
+- Mongoose
