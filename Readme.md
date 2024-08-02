@@ -1,6 +1,6 @@
 # ProductHub
 
-ProductHub is a simple web application for managing products, including user authentication and product-related operations using NodeJS and Express.
+ProductHub is a simple web application for managing products, including user authentication and product-related operations.
 
 ## Table of Contents
 
