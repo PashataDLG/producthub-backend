@@ -1,15 +1,5 @@
 # ProductHub
 
-## Table of Contents
-
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [Tests](#tests)
-- [Environment Variables](#environment-variables)
-- [Notes](#notes)
-
 ## Description
 
 ProductHub is a comprehensive solution for effective product management, featuring user registration, login, logout capabilities, and complete CRUD operations for products. This project leverages a range of advanced technologies to ensure robust performance and security:
@@ -24,6 +14,16 @@ ProductHub is a comprehensive solution for effective product management, featuri
 - **Mongoose**: Database interaction with MongoDB
 
 For database management, ProductHub utilizes **MongoDB**, ensuring scalability and flexibility in data storage and retrieval.
+
+## Table of Contents
+
+- [Description](#description)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Tests](#tests)
+- [Environment Variables](#environment-variables)
+- [Notes](#notes)
 
 ## Installation
 
