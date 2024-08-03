@@ -1,7 +1,5 @@
 # ProductHub
 
-ProductHub is a simple web application for managing products, including user authentication and product-related operations.
-
 ## Table of Contents
 
 - [Description](#description)
@@ -13,8 +11,6 @@ ProductHub is a simple web application for managing products, including user aut
 - [Notes](#notes)
 
 ## Description
-
-# ProductHub
 
 ProductHub is a comprehensive solution for effective product management, featuring user registration, login, logout capabilities, and complete CRUD operations for products. This project leverages a range of advanced technologies to ensure robust performance and security:
 
