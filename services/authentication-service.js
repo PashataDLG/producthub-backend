@@ -26,9 +26,10 @@ const login = async (userInfo) => {
 
         const user = await User.findOne({ username });
 
-        if (!user || !(user.comparePassword(password))) {
+        if (!user || !(await user.comparePassword(password))) {
+            console.log('here');
             return { success: false, message: 'Invalid username or password' };
-        }
+        } 
 
         const token = jwt.sign({ id: user._id, createdAt: user.createdAt }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
