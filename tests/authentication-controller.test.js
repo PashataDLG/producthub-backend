@@ -94,7 +94,7 @@ describe('POST /auth/login', () => {
                 username: "Testuser98",
                 password: "TestPassword123!"
             })
-    })
+    });
 
     it('Should login with the correct format username and password', async () => {
         const response = await request(app)
@@ -103,8 +103,33 @@ describe('POST /auth/login', () => {
                 username: "Testuser98",
                 password: "TestPassword123!"
             })
-             
-            expect(response.statusCode).toBe(200);
-            expect(response.body).toHaveProperty('token');
+
+        expect(response.statusCode).toBe(200);
+        expect(response.body).toHaveProperty('token');
     });
+
+    it('Should not login with incorrect username', async () => {
+        const response = await request(app)
+            .post('/auth/login')
+            .send({
+                username: "Tes",
+                password: "TestPassword123!"
+            })
+
+        expect(response.statusCode).toBe(400);
+        expect(response.body).toHaveProperty('message', 'Invalid username or password');
+    });
+
+    it('Should not login with incorrect password', async () => {
+        const response = await request(app)
+            .post('/auth/login')
+            .send({
+                username: "Testuser98",
+                password: "TestPass"
+            })
+
+        expect(response.statusCode).toBe(400);
+        expect(response.body).toHaveProperty('message', 'Invalid username or password');
+    });
+
 })
