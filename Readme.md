@@ -14,7 +14,20 @@ ProductHub is a simple web application for managing products, including user aut
 
 ## Description
 
-ProductHub is designed to help manage products effectively. It includes user registration, login, logout functionality, and CRUD operations for products. The project is built using various technologies such as Joi for schema validation, Jest for testing, Express.js for building the web server, Express Router for routing, rate limiter for limiting repeated requests, JWT for authentication, bcrypt for hashing passwords, and Mongoose for interacting with MongoDB.
+# ProductHub
+
+ProductHub is a comprehensive solution for effective product management, featuring user registration, login, logout capabilities, and complete CRUD operations for products. This project leverages a range of advanced technologies to ensure robust performance and security:
+
+- **Joi**: Schema validation
+- **Jest**: Testing
+- **Express.js**: Web server framework
+- **Express Router**: Routing
+- **Rate Limiter**: Request limiting
+- **JWT (JSON Web Tokens)**: Authentication
+- **Bcrypt**: Password hashing
+- **Mongoose**: Database interaction with MongoDB
+
+For database management, ProductHub utilizes **MongoDB**, ensuring scalability and flexibility in data storage and retrieval.
 
 ## Installation
 
