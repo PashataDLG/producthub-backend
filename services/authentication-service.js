@@ -27,7 +27,6 @@ const login = async (userInfo) => {
         const user = await User.findOne({ username });
 
         if (!user || !(await user.comparePassword(password))) {
-            console.log('here');
             return { success: false, message: 'Invalid username or password' };
         } 
 
