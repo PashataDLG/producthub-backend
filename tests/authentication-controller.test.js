@@ -132,4 +132,51 @@ describe('POST /auth/login', () => {
         expect(response.body).toHaveProperty('message', 'Invalid username or password');
     });
 
+    describe('POST /auth/logout', () => {
+        let token;
+        beforeEach(async () => {
+            await request(app)
+                .post('/auth/register')
+                .send({
+                    username: "Testuser98",
+                    password: "TestPassword123!"
+                });
+
+            const response = await request(app)
+                .post('/auth/login')
+                .send({
+                    username: "Testuser98",
+                    password: "TestPassword123!"
+                });
+            token = response.body.token
+        });
+
+        it('Should logout when there is a token', async () => {
+            const response = await request(app)
+                .post('/auth/logout')
+                .set('Authorization', `Bearer ${token}`)
+                .expect(200);
+
+            expect(response.body).toHaveProperty('message', 'Successfully logged out.');
+        });
+
+        it('Should not logout when there is no token provided', async () => {
+            const response = await request(app)
+                .post('/auth/logout')
+                .set('Authorization', ``)
+                .expect(401);
+            
+            expect(response.body).toHaveProperty('message', 'Access denied. No token provided.');
+        });
+
+        it('Should not logout when there is an invalid token', async () => {
+            const response = await request(app)
+                .post('/auth/logout')
+                .set('Authorization', `Bearer somerandomtoken41234213`)
+                .expect(400);
+            
+            expect(response.body).toHaveProperty('message', 'Invalid token!');
+        });
+    });
+
 })
