@@ -8,7 +8,6 @@ ProductHub is a personal project developed with Node.js and Express.js. It serve
 - **Jest**: Testing
 - **Express.js**: Web server framework
 - **Express Router**: Routing
-- **Rate Limiter**: Request limiting
 - **JWT (JSON Web Tokens)**: Authentication
 - **Bcrypt**: Password hashing
 - **Mongoose**: Database interaction with MongoDB
