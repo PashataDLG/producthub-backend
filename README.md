@@ -2,7 +2,7 @@
 
 ## Description
 
-ProductHub is a comprehensive solution for effective product management, featuring user registration, login, logout capabilities, and complete CRUD operations for products. This project leverages a range of advanced technologies to ensure robust performance and security:
+ProductHub is a personal project developed with Node.js and Express.js. It serves as a simple exercise to practice CRUD operations and authentication, offering user registration, login, and logout functionalities, along with complete product management capabilities. This project aims to improve skills in developing web applications.
 
 - **Joi**: Schema validation
 - **Jest**: Testing
