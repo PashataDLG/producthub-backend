@@ -4,9 +4,10 @@
   "main": "index.js",
   "scripts": {
     "test": "cross-env NODE_ENV=test jest",
+    "start": "node app.js",
     "serve": "node app.js",
     "dev": "nodemon app.js"
-},
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
