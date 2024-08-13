@@ -1,14 +1,17 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const productRoute = require('./routes/product-route.js');
 const authRoute = require('./routes/auth-route.js');
 const errorHandler = require('./middlewares/errorHandler.js');
+
 const app = express();
 
 require('dotenv').config();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors());
 
 app.use('/api/products', productRoute);
 app.use('/auth', authRoute);
